@@ -8,13 +8,24 @@
         <local:HolidayViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout>
-        <ListView ItemsSource="{Binding Holidays}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Date, StringFormat='{0:MMM dd, yyyy}'}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <Label Text="Canadian Holidays" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+
+        <!-- List View -->
+        <StackLayout Grid.Row="1">
+            <ListView ItemsSource="{Binding Holidays}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Date, StringFormat='{0:MMM dd, yyyy}'}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Grid>
 </ContentPage>
